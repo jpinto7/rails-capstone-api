@@ -1,0 +1,3 @@
+== README
+
+RoR API for the photo tourist capstone project.
