@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   scope :api, defaults: { format: :json } do
-    resources :cities, except: [:new, :edit]
-    resources :states, except: [:new, :edit]
+    resources :cities, only: [:index, :show]
+    resources :states, only: [:index, :show]
   end
 
   get '*path', to: 'pages#index'
