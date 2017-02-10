@@ -4,6 +4,8 @@
   angular
     .module('spa-photoTourist')
     .constant('spa-photoTourist.APP_CONFIG', {
+      server_url: "<%= ENV['RAILS_API_URL'] %>",
+      states_html: "<%= asset_path('spa/states/states.html') %>",
       main_page_html: "<%= asset_path('spa/pages/main.html') %>"
     });
 })();

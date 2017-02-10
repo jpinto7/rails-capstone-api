@@ -3,6 +3,7 @@
 
   angular
     .module('spa-photoTourist', [
-      'ui.router'
+      'ui.router',
+      'spa-photoTourist.states'
     ]);
 })();

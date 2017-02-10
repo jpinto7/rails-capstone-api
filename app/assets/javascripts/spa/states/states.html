@@ -1,0 +1,10 @@
+<div>
+  <h3>States</h3>
+  <span>(from spa/states/states.html)</span>
+
+  <ul>
+    <li ng-repeat="state in statesVM.states | orderBy:'name'">
+      <a ng-click="statesVM.edit(state)">{{state.name}}</a>
+    </li>
+  </ul>
+</div>
