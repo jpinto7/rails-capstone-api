@@ -8,8 +8,22 @@
   StatesConfigFunction.$inject = ['$resourceProvider'];
 
   function StatesConfigFunction($resourceProvider) {
+    console.dir($resourceProvider);
     $resourceProvider.defaults.actions.update = {
-      method: 'PUT'
+      method: 'PUT',
+      transformRequest: buildNestedBody
     };
+    $resourceProvider.defaults.actions.save = {
+      method: 'POST',
+      transformRequest: buildNestedBody
+    };
+    $resourceProvider.defaults.actions.remove = {
+      method: 'DELETE',
+      transformRequest: buildNestedBody
+    };
+  }
+
+  function buildNestedBody(data) {
+    return angular.toJson({state: data});
   }
 })();

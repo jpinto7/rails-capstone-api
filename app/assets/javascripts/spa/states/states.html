@@ -2,6 +2,18 @@
   <h3>States</h3>
   <span>(from spa/states/states.html)</span>
 
+  <form>
+    <div>
+      <label>Name:</label>
+      <input name="name" ng-model="statesVM.state.name" required="required" />
+    </div>
+    <button ng-if="!statesVM.state.id" ng-click="statesVM.create()" type="submit">Create State</button>
+    <div ng-if="statesVM.state.id">
+      <button ng-click="statesVM.update()" type="submit">Update State</button>
+      <button ng-click="statesVM.remove()" type="submit">Delete State</button>
+    </div>
+  </form>
+
   <ul>
     <li ng-repeat="state in statesVM.states | orderBy:'name'">
       <a ng-click="statesVM.edit(state)">{{state.name}}</a>
