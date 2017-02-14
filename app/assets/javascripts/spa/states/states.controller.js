@@ -44,7 +44,6 @@
     function create() {
       vm.state.$save()
         .then(function(response) {
-          console.log(response);
           vm.states.push(vm.state);
           newState();
         })
@@ -54,7 +53,6 @@
     function update() {
       vm.state.$update()
         .then(function(response) {
-          console.log(response);
         })
         .catch(handleError)
     }
