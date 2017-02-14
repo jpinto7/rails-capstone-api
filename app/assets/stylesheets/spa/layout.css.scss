@@ -1,3 +1,24 @@
 body {
-  background-color: #d2b48c;
+  background-color: #0088cc;
+  font-family: 'Raleway', sans-serif;
+}
+
+.page-title {
+  color: #ffffff;
+  text-align: center;
+  font-size: 60px;
+}
+
+.input-name {
+  box-shadow: none;
+  border: 2px solid #ccc;
+  &:focus, :hover {
+    box-shadow: none;
+    outline: 0;
+    border: 2px solid #ccc;
+  }
+}
+
+.states-list {
+  margin-top: 15px;
 }

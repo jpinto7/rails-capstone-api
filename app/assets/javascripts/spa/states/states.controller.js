@@ -15,6 +15,7 @@
     vm.create = create;
     vm.update = update;
     vm.remove = remove;
+    vm.cancel = cancel;
 
     activate();
     return;
@@ -34,6 +35,10 @@
 
     function edit(object) {
       vm.state = object;
+    }
+
+    function cancel() {
+      newState();
     }
 
     function create() {

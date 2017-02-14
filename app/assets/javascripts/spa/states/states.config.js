@@ -8,7 +8,6 @@
   StatesConfigFunction.$inject = ['$resourceProvider'];
 
   function StatesConfigFunction($resourceProvider) {
-    console.dir($resourceProvider);
     $resourceProvider.defaults.actions.update = {
       method: 'PUT',
       transformRequest: buildNestedBody
