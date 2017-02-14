@@ -53,6 +53,7 @@
     function update() {
       vm.state.$update()
         .then(function(response) {
+          newState();
         })
         .catch(handleError)
     }

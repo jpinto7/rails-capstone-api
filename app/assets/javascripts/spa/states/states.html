@@ -5,9 +5,9 @@
     </div>
     <button ng-if="!statesVM.state.id" ng-click="statesVM.create()" type="submit" class="btn btn-success pull-right">Create State</button>
     <div ng-if="statesVM.state.id" class="pull-right">
-      <button ng-click="statesVM.cancel()" type="submit" class="btn btn-info">Cancel</button>
       <button ng-click="statesVM.update()" type="submit" class="btn btn-warning">Update State</button>
       <button ng-click="statesVM.remove()" type="submit" class="btn btn-danger">Delete State</button>
+      <button ng-click="statesVM.cancel()" type="submit" class="btn btn-info">Cancel</button>
     </div>
   </form>
   <div class="col-xs-8 col-xs-offset-2 states-list">
