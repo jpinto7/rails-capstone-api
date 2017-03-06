@@ -1,6 +1,8 @@
 // SPA Demo Javascript Manifest File
 //= require jquery2
 //= require bootstrap
+//= require arrive
+//= require bootstrap-material-design
 //= require angular
 //= require angular-ui-router
 //= require angular-resource
@@ -45,3 +47,9 @@
 //= require spa-demo/subjects/things/things_authz.service
 //= require spa-demo/subjects/things/things_authz.directive
 //= require spa-demo/subjects/things/things.component
+
+(function($) {
+  $(document).ready(function() {
+    $.material.init();
+  });
+})(jQuery);
