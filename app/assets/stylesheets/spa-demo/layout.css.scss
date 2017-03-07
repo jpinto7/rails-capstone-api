@@ -1,0 +1,46 @@
+/*
+* layout.css
+*/
+
+body {
+  background-color: #d2b48c;
+}
+
+form .invalid {
+  color: red;
+}
+
+.fullsize {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+/*********** navbar *************/
+
+.nav li form {
+  padding-left: 15px;
+  padding-right: 15px;  
+  @media (min-width: 768px) {
+    min-width: 200px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+#navbar-search-form {
+  button[type='submit'] {
+    margin-bottom: 0px;
+    @media (min-width: 768px) {
+      margin-left: 10px;
+      margin-top: 0px;
+    }
+  }
+}
+
+[readonly='readonly'] {
+  background-color: inherit;
+}
+
+button:disabled {
+  color:#717782;
+}

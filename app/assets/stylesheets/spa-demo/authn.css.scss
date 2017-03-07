@@ -9,6 +9,27 @@ span#user_id {
   margin-right: 10px; /* separate "New here?" label and "Sing Up" link */
 }
 
+#dropdown-authn-session {
+  @media (max-width: 767px) {
+    padding: 0px 15px;
+    > li {
+      background-color: #ffffff;
+      border-radius: 4px;
+    }
+  }
+}
+
+#login-form {
+  #login-email, #login-password, #new-account {
+    > label, > input {
+      font-size: 14px;
+    }
+    @media (min-width: 768px) {
+      margin-top: 10px;
+    }
+  }
+}
+
 div#logout-identity {
   text-align: center; /* keep organized as name in label gets long */
 }
