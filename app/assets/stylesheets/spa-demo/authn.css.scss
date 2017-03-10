@@ -3,6 +3,16 @@ span#user_id {
   display: none;
 }
 
+#signup-page {
+  > .container {
+    max-width: 400px;
+    border-radius: 4px;
+    h1 {
+      color: #212121;
+    }
+  }
+}
+
 #login-form #new-account label {
   width: auto; /* flatten the New here? label */
   margin-top: 5px; /* separate from the Login button */
@@ -15,6 +25,20 @@ span#user_id {
     > li {
       background-color: #ffffff;
       border-radius: 4px;
+    }
+  }
+}
+
+#login-dropdown, #gotomenu-dropdown {
+  > button {
+    margin: 10px 0;
+    padding: 10px 15px;
+    outline: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-weight: 300;
+    @media (max-width: 1199px) {
+      padding: 5px 15px;
     }
   }
 }

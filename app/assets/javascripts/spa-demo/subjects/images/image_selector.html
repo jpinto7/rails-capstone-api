@@ -1,11 +1,15 @@
 <div class="image-list" ng-show="$ctrl.authz.canQuery">
-  <ul>
-    <li ng-repeat="item in $ctrl.items | orderBy:'caption'">
-      <a ui-sref="images({id:item.id})">
+  <div class="row">
+    <div ng-repeat="item in $ctrl.items | orderBy:'caption'">
+      <div class="clearfix" ng-if="$index % 3 == 0"></div>
+      <div class="col-sm-4 image-column" ui-sref="images({id:item.id})">
+        <img src="http://placehold.it/350x150" class="img-responsive" alt="image" />
+        <div class="well text-center">
           <span class="image_id id">{{item.id}}</span>
           {{item.caption}}
-      <span ng-show="$ctrl.authz.canUpdateItem(item)"> *</span>
-      </a>
-    </li>
-  </ul>
+          <span class="image-badge" ng-show="$ctrl.authz.canUpdateItem(item)"><i class="material-icons">grade</i></span>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

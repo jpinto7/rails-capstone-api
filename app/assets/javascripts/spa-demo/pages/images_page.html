@@ -1,5 +1,8 @@
-<div class="images-area" sd-images-authz>
-  <h3>Images</h3>
+<div class="images-area container" sd-images-authz>
+  <div class="page-header">
+    <h1>Images <small>explore and find</small></h1>
+  </div>
   <sd-image-editor authz="vm.authz"></sd-image-editor>
-  <sd-image-selector authz="vm.authz"></sd-image-selector>    
+  <sd-image-selector authz="vm.authz"></sd-image-selector>
+  <button class="btn btn-primary btn-fab" ng-if="vm.authz.canCreate"><i class="material-icons">add</i></button>
 </div>

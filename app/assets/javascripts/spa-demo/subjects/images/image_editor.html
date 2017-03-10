@@ -3,13 +3,12 @@
   <span class="invalid">{{$ctrl.item.errors.full_messages}}</span>
 
   <div class="image-caption row col-lg-12">
-    <label class="col-xs-3">Caption:</label>
-    <input class="col-xs-9"
-           name="image-caption" 
-           ng-model="$ctrl.item.caption" 
-           ng-readonly="!$ctrl.authz.canUpdate"
-           maxlength="80"
-           pattern=".{3,}" title="3 character minimum for Caption"/>
+    <div class="form-group">
+      <label for="input-image-caption" class="col-xs-3 control-label">Caption:</label>
+      <div class="col-xs-9">
+        <input class="form-control" id="input-image-caption" name="image-caption" ng-model="$ctrl.item.caption" ng-disabled="!$ctrl.authz.canUpdate" maxlength="80" pattern=".{3,}" title="3 character minimum for Caption"/>
+      </div>
+    </div>
     <span class="invalid">{{$ctrl.item.errors.name}}</span>
   </div>
 
@@ -31,8 +30,8 @@
                 $ctrl.authz.authenticated">
     <label class="col-xs-3">Linkable Things:</label>
     <div class="link-things" class="col-xs-9">
-      <select name="linkable-things" 
-              ng-model="$ctrl.selected_linkables"               
+      <select name="linkable-things"
+              ng-model="$ctrl.selected_linkables"
               multiple>
         <option ng-repeat="thing in $ctrl.linkable_things | orderBy:'name'"
                 value="{{thing.id}}">{{thing.name}}</option>
@@ -52,17 +51,17 @@
       <span ng-show="$ctrl.item.id">
         <button name="image-update"
                 type="submit"
-                ng-show="$ctrl.authz.canUpdate" 
+                ng-show="$ctrl.authz.canUpdate"
                 ng-disabled="!imageform.$dirty"
                 ng-click="$ctrl.update()">Update Image</button>
         <button name="image-update"
                 type="submit"
-                ng-show="!$ctrl.authz.canUpdate" 
+                ng-show="!$ctrl.authz.canUpdate"
                 ng-disabled="$ctrl.selected_linkables.length==0"
                 ng-click="$ctrl.linkThings()">Link to Things</button>
         <button name="image-delete"
                 type="submit"
-                ng-show="$ctrl.authz.canDelete" 
+                ng-show="$ctrl.authz.canDelete"
                 ng-click="$ctrl.remove()">Delete Image</button>
       </span>
     </span>

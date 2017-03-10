@@ -1,0 +1,42 @@
+
+form.thing-form .id,
+div.thing-list .id,
+form.image-form .id,
+div.image-list .id {
+  display: none;
+}
+
+sd-image-editor form,
+sd-thing-editor form {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.images-area {
+  > .btn-fab {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+  }
+}
+
+.image-list {
+  .image-column {
+    cursor: pointer;
+    img {
+      width: 100%;
+      border-top-right-radius: 2px;
+      border-top-left-radius: 2px;
+    }
+    .well {
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      .image-badge {
+        position: absolute;
+        top: 3px;
+        right: 19px;
+      }
+    }
+  }
+}
