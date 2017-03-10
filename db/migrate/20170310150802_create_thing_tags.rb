@@ -6,5 +6,6 @@ class CreateThingTags < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+    add_index :thing_tags, [:tag_id, :thing_id], unique: true    
   end
 end
