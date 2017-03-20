@@ -10,6 +10,10 @@ form .invalid {
   color: red;
 }
 
+#main-container {
+  margin: 15px 0;
+}
+
 .fullsize {
   padding-right: 0px;
   padding-left: 0px;
@@ -17,17 +21,32 @@ form .invalid {
 
 /*********** navbar *************/
 
-.nav li form {
-  padding-left: 15px;
-  padding-right: 15px;
-  @media (min-width: 768px) {
-    min-width: 200px;
-    padding-left: 10px;
-    padding-right: 10px;
+nav {
+  &.navbar {
+    margin-bottom: 0px;
+  }
+}
+
+.nav {
+  li {
+    form {
+      padding-left: 15px;
+      padding-right: 15px;
+      @media (min-width: 768px) {
+        min-width: 200px;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    }
   }
 }
 
 #navbar-search-form {
+  .form-group {
+    > input {
+      min-width: 220px;
+    }
+  }
   button[type='submit'] {
     margin-bottom: 0px;
     @media (min-width: 768px) {

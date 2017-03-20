@@ -12,7 +12,40 @@ sd-thing-editor form {
   padding-right: 15px;
 }
 
-.images-area {
+sd-image-editor, sd-thing-editor {
+  .well {
+    max-width: 800px;
+    border-radius: 4px;
+    margin: 0 auto;
+  }
+}
+
+sd-image-editor {
+  .image-things {
+    .list-group {
+      > .list-group-item {
+        cursor: pointer;
+        .list-group-item-heading {
+          font-weight: 400;
+          &:hover, &:focus {
+            color: #009688;
+          }
+        }
+      }
+    }
+  }
+  .image-controls {
+    text-align: right;
+  }
+}
+
+sd-thing-editor {
+  .thing-controls {
+    text-align: right;
+  }
+}
+
+.images-area, .things-area {
   > .btn-fab {
     position: fixed;
     bottom: 20px;
@@ -21,8 +54,8 @@ sd-thing-editor form {
   }
 }
 
-.image-list {
-  .image-column {
+.image-list, .thing-list {
+  .item-column {
     cursor: pointer;
     img {
       width: 100%;
@@ -36,6 +69,80 @@ sd-thing-editor form {
         position: absolute;
         top: 3px;
         right: 19px;
+      }
+    }
+  }
+}
+
+.thing-list {
+  .jumbotron {
+    &.not-found-message {
+      p {
+        margin-bottom: 0px;
+      }
+    }
+  }
+}
+
+.thing-images {
+  .list-group {
+    > .list-group-item {
+      .list-group-item-heading {
+        cursor: pointer;
+        font-weight: 400;
+        &:hover, &:focus {
+          color: #009688;
+        }
+        span {
+          position: absolute;
+          top: 22px;
+        }
+        .form-group {
+          margin-top: 0px;
+        }
+      }
+    }
+  }
+}
+
+.thing-form {
+  tags-input[disabled] {
+    .tags {
+      .tag-item {
+        .remove-button {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.thing-form {
+  tags-input[disabled] {
+    .tags {
+      cursor: not-allowed;
+    }
+  }
+}
+
+.thing-form {
+  tags-input, tags-input[disabled] {
+    .tags {
+      box-shadow: none;
+      -webkit-appearance: none;
+      border: none;
+      border-bottom: 1px solid #d2d2d2;
+      outline: 0;
+      .tag-item {
+        border: 1px solid #009688;
+        border-radius: 4px;
+        background: none;
+        background-color: #009688;
+        font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+        color: rgba(255, 255, 255, 0.84);
+        .remove-button {
+          color: rgba(255, 255, 255, 0.84);
+        }
       }
     }
   }

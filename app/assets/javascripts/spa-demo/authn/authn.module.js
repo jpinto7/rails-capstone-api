@@ -1,8 +1,8 @@
 (function() {
-  "use strict";
+  'use strict';
 
   angular
-    .module("spa-demo.authn", [
-      "ng-token-auth"
+    .module('spa-demo.authn', [
+      'ng-token-auth'
     ]);
 })();

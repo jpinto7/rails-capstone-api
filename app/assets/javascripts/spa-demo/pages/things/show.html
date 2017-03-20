@@ -1,0 +1,6 @@
+<div class="things-area" sd-things-authz>
+  <sd-thing-editor authz="vm.authz" editor-title="Thing"></sd-thing-editor>
+  <button class="btn btn-primary btn-fab" ui-sref="things" ng-if="vm.authz.canCreate">
+    <i class="material-icons">arrow_back</i>
+  </button>
+</div>

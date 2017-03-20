@@ -1,6 +1,6 @@
 (function() {
-  "use strict";
+  'use strict';
 
   angular
-    .module("spa-demo.subjects", []);
+    .module('spa-demo.subjects', []);
 })();

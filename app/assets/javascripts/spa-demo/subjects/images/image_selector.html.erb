@@ -2,8 +2,8 @@
   <div class="row">
     <div ng-repeat="item in $ctrl.items | orderBy:'caption'">
       <div class="clearfix" ng-if="$index % 3 == 0"></div>
-      <div class="col-sm-4 image-column" ui-sref="images({id:item.id})">
-        <img src="http://placehold.it/350x150" class="img-responsive" alt="image" />
+      <div class="col-sm-4 item-column" ui-sref="showImage({id:item.id})">
+        <img src="<%= image_path('placeholder.png') %>" class="img-responsive" alt="image" />
         <div class="well text-center">
           <span class="image_id id">{{item.id}}</span>
           {{item.caption}}

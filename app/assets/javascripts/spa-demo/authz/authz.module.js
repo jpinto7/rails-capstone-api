@@ -1,7 +1,6 @@
 (function() {
-  "use strict";
+  'use strict';
 
   angular
-    .module("spa-demo.authz", [
-    ]);
+    .module('spa-demo.authz', []);
 })();

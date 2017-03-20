@@ -4,6 +4,7 @@
 //= require arrive
 //= require bootstrap-material-design
 //= require angular
+//= require ng-tags-input
 //= require angular-ui-router
 //= require angular-resource
 //= require angular-cookie

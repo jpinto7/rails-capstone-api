@@ -19,15 +19,15 @@
             <li ui-sref-active="active">
               <a ui-sref="images">Images</a>
             </li>
-            <li ui-sref-active="active">
+            <li ui-sref-active="active" ng-disabled="!$ctrl.isAuthenticated()">
               <a ui-sref="things">Things</a>
             </li>
           </ul>
         </li>
       </ul>
-      <form id="navbar-search-form" class="navbar-form navbar-left">
+      <form id="navbar-search-form" class="navbar-form navbar-left" ng-submit="$ctrl.goSearch()" ng-if="$ctrl.isAuthenticated()">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
+          <input type="text" ng-model="$ctrl.searchString" class="form-control" placeholder="Search things by tag's name...">
         </div>
         <button type="submit" class="btn btn-raised btn-default btn-sm">Submit</button>
       </form>

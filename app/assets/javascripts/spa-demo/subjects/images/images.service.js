@@ -1,18 +1,27 @@
 (function() {
-  "use strict";
+  'use strict';
 
   angular
-    .module("spa-demo.subjects")
-    .factory("spa-demo.subjects.Image", ImageFactory);
+    .module('spa-demo.subjects')
+    .factory('spa-demo.subjects.Image', ImageFactory);
 
-  ImageFactory.$inject = ["$resource", "spa-demo.config.APP_CONFIG"];
+  ImageFactory.$inject = [
+    '$resource',
+    'spa-demo.config.APP_CONFIG'
+  ];
+
   function ImageFactory($resource, APP_CONFIG) {
-    var service = $resource(APP_CONFIG.server_url + "/api/images/:id",
+    var service = $resource(
+      APP_CONFIG.server_url + '/api/images/:id',
       { id: '@id' },
       {
-        update: {method: "PUT"},
-        save:   {method: "POST", transformRequest: checkEmptyPayload }
-      });
+        update: { method: 'PUT' },
+        save: {
+          method: 'POST',
+          transformRequest: checkEmptyPayload
+        }
+      }
+    );
     return service;
   }
 
@@ -21,8 +30,8 @@
   //ngResource is not passing a null field by default, we have to force it
   function checkEmptyPayload(data) {
     if (!data['caption']) {
-      data['caption']=null;
-    } 
+      data['caption'] = null;
+    }
     return angular.toJson(data);
-  }    
+  }
 })();

@@ -1,36 +1,39 @@
-<form id="signup-form" name="signup_form" class="form-horizontal" ng-submit="$ctrl.signup()">
-  <span class="invalid" ng-hide="signup_form.$dirty">{{$ctrl.signupForm.errors.full_messages}}</span>
-  <div id="signup-email" class="form-group">
-    <label for="input-signup-email" class="col-xs-3 control-label">email</label>
-    <div class="col-xs-9">
-      <input class="form-control" type="email" id="input-signup-email" name="signup-email" ng-model="$ctrl.signupForm.email" required="required" />
+<h1 class="text-center">{{$ctrl.title}}</h1>
+<div class="well">
+  <form id="signup-form" name="signup_form" class="form-horizontal" ng-submit="$ctrl.signup()">
+    <span class="invalid" ng-hide="signup_form.$dirty">{{$ctrl.signupForm.errors.full_messages}}</span>
+    <div id="signup-email" class="form-group">
+      <label for="input-signup-email" class="col-xs-3 control-label">email</label>
+      <div class="col-xs-9">
+        <input class="form-control" type="email" id="input-signup-email" name="signup-email" ng-model="$ctrl.signupForm.email" required="required" />
+      </div>
+      <span class="invalid" ng-hide="signup_form.$dirty">{{$ctrl.signupForm.errors.email}}</span>
     </div>
-    <span class="invalid" ng-hide="signup_form.$dirty">{{$ctrl.signupForm.errors.email}}</span>
-  </div>
-  <div id="signup-name" class="form-group">
-    <label for="input-signup-name" class="col-xs-3 control-label">name</label>
-    <div class="col-xs-9">
-      <input class="form-control" id="input-signup-name" name="signup-name" ng-model="$ctrl.signupForm.name" required="required" />
+    <div id="signup-name" class="form-group">
+      <label for="input-signup-name" class="col-xs-3 control-label">name</label>
+      <div class="col-xs-9">
+        <input class="form-control" id="input-signup-name" name="signup-name" ng-model="$ctrl.signupForm.name" required="required" />
+      </div>
+      <span class="invalid" ng-hide="signup_form.$dirty">{{$ctrl.signupForm.errors.name}}</span>
     </div>
-    <span class="invalid" ng-hide="signup_form.$dirty">{{$ctrl.signupForm.errors.name}}</span>
-  </div>
-  <div id="signup-password" class="form-group">
-    <label for="input-signup-password" class="col-xs-3 control-label">password</label>
-    <div class="col-xs-9">
-      <input class="form-control" type="password" name="signup-password" ng-model="$ctrl.signupForm.password" required="required" />
+    <div id="signup-password" class="form-group">
+      <label for="input-signup-password" class="col-xs-3 control-label">password</label>
+      <div class="col-xs-9">
+        <input class="form-control" type="password" name="signup-password" ng-model="$ctrl.signupForm.password" required="required" />
+      </div>
+      <span class="invalid" ng-hide="signup_form.$dirty">{{$ctrl.signupForm.errors.password}}</span>
     </div>
-    <span class="invalid" ng-hide="signup_form.$dirty">{{$ctrl.signupForm.errors.password}}</span>
-  </div>
-  <div id="signup-password_confirmation" class="form-group">
-    <label for="input-signup-password-confirmation" class="col-xs-3 control-label">password confirmation</label>
-    <div class="col-xs-9">
-      <input class="form-control" id="input-signup-password-confirmation" type="password" name="signup-password_confirmation" ng-model="$ctrl.signupForm.password_confirmation" required="required"/>
+    <div id="signup-password_confirmation" class="form-group">
+      <label for="input-signup-password-confirmation" class="col-xs-3 control-label">password confirmation</label>
+      <div class="col-xs-9">
+        <input class="form-control" id="input-signup-password-confirmation" type="password" name="signup-password_confirmation" ng-model="$ctrl.signupForm.password_confirmation" required="required"/>
+      </div>
+      <span class="invalid" ng-hide="signup_form.$dirty">{{$ctrl.signupForm.errors.password_confirmation}}</span>
     </div>
-    <span class="invalid" ng-hide="signup_form.$dirty">{{$ctrl.signupForm.errors.password_confirmation}}</span>
-  </div>
-  <div id="signup-controls" class="form-group">
-    <div class="col-xs-12">
-      <button ng-hide="$ctrl.id" ng-disabled="signup_form.$invalid" class="btn btn-primary btn-raised btn-block btn-lg" type="submit" name="signup-submit">Sign Up</button>
+    <div id="signup-controls" class="form-group">
+      <div class="col-xs-12">
+        <button ng-hide="$ctrl.id" ng-disabled="signup_form.$invalid" class="btn btn-primary btn-raised btn-block btn-lg" type="submit" name="signup-submit">Sign Up</button>
+      </div>
     </div>
-  </div>
-</form>
+  </form>
+</div>

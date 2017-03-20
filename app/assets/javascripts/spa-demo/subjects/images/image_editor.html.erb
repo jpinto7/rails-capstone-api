@@ -1,0 +1,67 @@
+<div class="page-header">
+  <h1>{{$ctrl.editorTitle}}<small ng-if="$ctrl.item.caption"> {{$ctrl.item.caption}}</small></h1>
+</div>
+<div class="well">
+  <form class="image-form form-horizontal" name="imageform">
+    <span class="image_id id">{{$ctrl.item.id}}</span>
+    <span class="invalid">{{$ctrl.item.errors.full_messages}}</span>
+    <div class="image-caption form-group">
+      <label for="input-image-caption" class="col-xs-3 control-label">Caption:</label>
+      <div class="col-xs-9">
+        <input class="form-control" id="input-image-caption" name="image-caption" ng-model="$ctrl.item.caption" ng-disabled="!$ctrl.authz.canUpdate" maxlength="80" pattern=".{3,}" title="3 character minimum for Caption"/>
+      </div>
+      <span class="invalid">{{$ctrl.item.errors.name}}</span>
+    </div>
+    <div class="image-things form-group" ng-show="$ctrl.item.id">
+      <label class="col-xs-3 control-label">Related Things:</label>
+      <div class="col-xs-9">
+        <div class="list-group">
+          <div class="list-group-item" ng-repeat="ti in $ctrl.things | orderBy:'priority'" ui-sref="showThing({id:ti.thing_id})">
+            <div class="row-content">
+              <span class="id thing_id">{{ti.thing_id}}</span>
+              <h4 class="list-group-item-heading">{{ti.thing_name}}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="invalid">{{$ctrl.item.errors.thing_images}}</span>
+    </div>
+    <div class="linkable-things form-group" ng-show="$ctrl.linkable_things.length>0 && $ctrl.authz.authenticated">
+      <label for="select-link-things" class="col-xs-3 control-label">Linkable Things:</label>
+      <div class="col-xs-9">
+        <select name="linkable-things" id="select-link-things" ng-model="$ctrl.selected_linkables" class="form-control" multiple>
+          <option ng-repeat="thing in $ctrl.linkable_things | orderBy:'name'" value="{{thing.id}}">{{thing.name}}</option>
+        </select>
+      </div>
+      <span class="invalid">{{$ctrl.item.errors.linkable_things}}</span>
+    </div>
+    <div class="image-controls" ng-show="$ctrl.authz.authenticated">
+      <button name="image-create"
+              class="btn btn-raised btn-primary"
+              ng-show="!$ctrl.item.id && $ctrl.authz.canCreate"
+              type="submit"
+              ng-disabled="imageform.$invalid"
+              ng-click="$ctrl.create()">Create Image</button>
+
+      <div ng-show="$ctrl.item.id">
+        <button name="image-update"
+                class="btn btn-raised btn-success"
+                type="submit"
+                ng-show="$ctrl.authz.canUpdate"
+                ng-disabled="!imageform.$dirty"
+                ng-click="$ctrl.update()">Update Image</button>
+        <button name="image-update"
+                class="btn btn-raised btn-info"
+                type="submit"
+                ng-show="!$ctrl.authz.canUpdate"
+                ng-disabled="$ctrl.selected_linkables.length==0"
+                ng-click="$ctrl.linkThings()">Link to Things</button>
+        <button name="image-delete"
+                class="btn btn-raised btn-danger"
+                type="submit"
+                ng-show="$ctrl.authz.canDelete"
+                ng-click="$ctrl.remove()">Delete Image</button>
+      </div>
+    </div>
+  </form>
+</div>
