@@ -39,16 +39,6 @@ class ThingsController < ApplicationController
   end
 
   def update
-    @thing.tags.map { |tag| @thing.tags.delete(tag) unless (tags_params.any? { |tag_param| tag_param[:id] == tag.id }) }
-    tags_params.map do |tag_param|
-      tag = Tag.find_by(name: tag_param[:name].parameterize('_'))
-      if tag
-        thing_tag = ThingTag.find_by(thing_id: @thing.id, tag_id: tag.id)
-        @thing.tags << tag unless thing_tag
-      else
-        @thing.tags.build(name: tag_param[:name])
-      end
-    end
     authorize @thing
     if @thing.update(thing_params)
       head :no_content
