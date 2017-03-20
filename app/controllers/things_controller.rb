@@ -65,8 +65,4 @@ class ThingsController < ApplicationController
           p.require(:name) #throws ActionController::ParameterMissing
         }.permit(:name, :description, :notes)
     end
-
-    def tags_params
-      params.require(:thing).permit({ tags: [:id, :name] })[:tags] || []
-    end
 end

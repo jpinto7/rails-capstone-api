@@ -10,7 +10,7 @@
     'spa-demo.config.APP_CONFIG'
   ];
 
-  function ThingImage($resource, APP_CONFIG) {
+  function ThingTag($resource, APP_CONFIG) {
     return $resource(
       APP_CONFIG.server_url + '/api/things/:thing_id/thing_tags/:id',
       {

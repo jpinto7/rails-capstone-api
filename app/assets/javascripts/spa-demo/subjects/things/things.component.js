@@ -43,10 +43,11 @@
     '$state','$stateParams',
     'spa-demo.authz.Authz',
     'spa-demo.subjects.Thing',
-    'spa-demo.subjects.ThingImage'
+    'spa-demo.subjects.ThingImage',
+    'spa-demo.subjects.ThingTag'
   ];
 
-  function ThingEditorController($scope, $q, $state, $stateParams, Authz, Thing, ThingImage) {
+  function ThingEditorController($scope, $q, $state, $stateParams, Authz, Thing, ThingImage, ThingTag) {
     var vm = this;
     vm.create = create;
     vm.clear = clear;
@@ -82,6 +83,7 @@
       var itemId = thingId ? thingId : vm.item.id;
       console.log('re/loading thing', itemId);
       vm.images = ThingImage.query({ thing_id: itemId });
+      vm.tags = ThingTag.query({ thing_id: itemId });
       vm.item = Thing.get({ id: itemId });
       vm.thingsAuthz.newItem(vm.item);
       vm.images.$promise.then(
@@ -93,9 +95,11 @@
       );
       $q.all([
         vm.item.$promise,
-        vm.images.$promise
+        vm.images.$promise,
+        vm.tags.$promise
       ]).catch(handleError);
     }
+
     function haveDirtyLinks() {
       for (var i = 0; vm.images && i<vm.images.length; i++) {
         var ti = vm.images[i];
@@ -126,6 +130,33 @@
       vm.item.errors = null;
       var update = vm.item.$update();
       updateImageLinks(update);
+      updateThingTags(update);
+    }
+
+    function updateThingTags(promise) {
+      console.log('updating tags for thing');
+      var promises = [];
+      if (promise) {
+        promises.push(promise);
+      }
+      angular.forEach(vm.tags, function(tt) {
+        promises.push(ThingTag.update({
+          thing_id: vm.item.id,
+          tag_name: tt.name,
+          tag_id: tt.id
+        }));
+      });
+
+      console.log('waiting for promises', promises);
+      $q.all(promises).then(
+        function(response) {
+          console.log('promise.all response', response);
+          //update button will be disabled when not $dirty
+          $scope.thingform.$setPristine();
+          reload();
+        },
+        handleError
+      );
     }
 
     function updateImageLinks(promise) {
@@ -135,6 +166,7 @@
         promises.push(promise);
       }
       angular.forEach(vm.images, function(ti) {
+        console.dir(ti);
         if (ti.toRemove) {
           promises.push(ti.$remove());
         } else if (ti.originalPriority != ti.priority) {

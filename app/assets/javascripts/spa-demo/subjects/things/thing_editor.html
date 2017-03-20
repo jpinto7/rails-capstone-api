@@ -22,7 +22,7 @@
     <div class="thing-tags form-group" ng-show="thingform.$valid && $ctrl.authz.canSeeTags">
       <label for="thing-tags" class="col-xs-3 control-label">Tags</label>
       <div class="col-xs-9">
-        <tags-input ng-model="$ctrl.item.tags" key-property="name" display-property="name" replace-spaces-with-dashes="false" ng-disabled="!$ctrl.authz.canUpdate"></tags-input>
+        <tags-input ng-model="$ctrl.tags" key-property="name" display-property="name" replace-spaces-with-dashes="false" ng-disabled="!$ctrl.authz.canAssignTags"></tags-input>
       </div>
     </div>
     <div class="thing-notes form-group" ng-show="$ctrl.authz.canGetDetails && thingform.$valid">
@@ -57,7 +57,7 @@
                   </span>
                   <span ng-if="!(ti.originalPriority == ti.priority || ti.toRemove)">
                     <i class="material-icons">new_releases</i>
-                  </span>                  
+                  </span>
                 </h4>
                 <h4 ng-hide="ti.image_caption" ui-sref="showImage({id:ti.image_id})" class="list-group-item-heading">
                   (no caption {{ti.image_id}})
