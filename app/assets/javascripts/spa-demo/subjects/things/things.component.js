@@ -18,7 +18,8 @@
       templateUrl: thingSelectorTemplateUrl,
       controller: ThingSelectorController,
       bindings: {
-        authz: '<'
+        authz: '<',
+        searchView: '='
       },
       require: {
         thingsAuthz: '^sdThingsAuthz'
@@ -128,42 +129,21 @@
 
     function update() {
       vm.item.errors = null;
-      var update = vm.item.$update();
-      updateImageLinks(update);
-      updateThingTags(update);
-    }
-
-    function updateThingTags(promise) {
-      console.log('updating tags for thing');
-      var promises = [];
-      if (promise) {
-        promises.push(promise);
-      }
-      angular.forEach(vm.tags, function(tt) {
-        promises.push(ThingTag.update({
-          thing_id: vm.item.id,
-          tag_name: tt.name,
-          tag_id: tt.id
-        }));
+      var updateThing = vm.item.$update();
+      var saveThingTags = ThingTag.save({
+        thing_id: vm.item.id,
+        tags: vm.tags
       });
-
-      console.log('waiting for promises', promises);
-      $q.all(promises).then(
-        function(response) {
-          console.log('promise.all response', response);
-          //update button will be disabled when not $dirty
-          $scope.thingform.$setPristine();
-          reload();
-        },
-        handleError
-      );
+      updateImageLinks([updateThing, saveThingTags]);
     }
 
-    function updateImageLinks(promise) {
+    function updateImageLinks(promises_array) {
       console.log('updating links to images');
       var promises = [];
-      if (promise) {
-        promises.push(promise);
+      if (promises_array) {
+        angular.forEach(promises_array, function(promise) {
+          promises.push(promise);
+        });
       }
       angular.forEach(vm.images, function(ti) {
         console.dir(ti);

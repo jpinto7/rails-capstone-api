@@ -66,8 +66,13 @@
       })
       .state('things', {
         parent: 'auth',
-        url: '/things?tag',
+        url: '/things',
         templateUrl: APP_CONFIG.things_page_html
+      })
+      .state('search', {
+        parent: 'auth',
+        url: '/search?tag',
+        templateUrl: APP_CONFIG.search_page_html
       });
 
     $urlRouterProvider.otherwise('/');

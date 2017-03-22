@@ -3,7 +3,7 @@ class ThingsController < ApplicationController
   helper ThingsHelper
   before_action :set_thing, only: [:show, :update, :destroy]
   before_action :authenticate_user!, only: [:create, :update, :destroy]
-  wrap_parameters :thing, include: ["name", "description", "notes", "tags"]
+  wrap_parameters :thing, include: ['name', 'description', 'notes']
   after_action :verify_authorized
   after_action :verify_policy_scoped, only: [:index]
 
@@ -16,9 +16,7 @@ class ThingsController < ApplicationController
 
   def show
     authorize @thing
-    things = ThingPolicy::Scope.new(current_user,
-                                    Thing.where(:id=>@thing.id))
-                                    .user_roles(false)
+    things = ThingPolicy::Scope.new(current_user, Thing.where(id: @thing.id)).user_roles(false)
     @thing = ThingPolicy.merge(things).first
   end
 
@@ -33,7 +31,7 @@ class ThingsController < ApplicationController
         role.save!
         render :show, status: :created, location: @thing
       else
-        render json: {errors:@thing.errors.messages}, status: :unprocessable_entity
+        render json: { errors:@thing.errors.messages }, status: :unprocessable_entity
       end
     end
   end
@@ -43,26 +41,22 @@ class ThingsController < ApplicationController
     if @thing.update(thing_params)
       head :no_content
     else
-      render json: {errors:@thing.errors.messages}, status: :unprocessable_entity
+      render json: { errors: @thing.errors.messages }, status: :unprocessable_entity
     end
   end
 
   def destroy
     authorize @thing
     @thing.destroy
-
     head :no_content
   end
 
   private
-
     def set_thing
       @thing = Thing.find(params[:id])
     end
 
     def thing_params
-      params.require(:thing).tap {|p|
-          p.require(:name) #throws ActionController::ParameterMissing
-        }.permit(:name, :description, :notes)
+      params.require(:thing).tap { |p| p.require(:name) }.permit(:name, :description, :notes)
     end
 end

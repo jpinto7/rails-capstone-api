@@ -29,19 +29,17 @@
     ThingsAuthz.prototype.canAddImage = function(thing) {
       return Authz.isMember(thing);
     };
+
     ThingsAuthz.prototype.canUpdateImage = function(thing) {
       return Authz.isOrganizer(thing);
     };
+
     ThingsAuthz.prototype.canRemoveImage = function(thing) {
       return Authz.isOrganizer(thing) || Authz.isAdmin();
     };
 
     ThingsAuthz.prototype.canAssignTags = function(thing) {
       return Authz.isOrganizer(thing);
-    };
-
-    ThingsAuthz.prototype.canConstrainThings = function() {
-      return Authz.isAuthenticated();
     };
 
     ThingsAuthz.prototype.canSeeTags = function() {

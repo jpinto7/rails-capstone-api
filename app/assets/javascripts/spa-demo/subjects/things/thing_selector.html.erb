@@ -11,7 +11,7 @@
         </div>
       </div>
     </div>
-    <div class="jumbotron not-found-message" ng-if="!$ctrl.items.length">
+    <div class="jumbotron not-found-message" ng-if="!$ctrl.items.length && $ctrl.searchView">
       <p class="text-center">No results were found for tag's name: <strong>{{$ctrl.thingsAuthz.searchTagName}}</strong></p>
     </div>
   </div>

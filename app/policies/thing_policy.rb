@@ -48,11 +48,7 @@ class ThingPolicy < ApplicationPolicy
     true
   end
 
-  def add_tag?
-    organizer?
-  end
-
-  def remove_tag?
+  def assign_tags?
     organizer?
   end
 

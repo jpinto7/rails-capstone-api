@@ -59,7 +59,6 @@
       vm.authz.authenticated = ThingsAuthz.isAuthenticated();
       vm.authz.canQuery = ThingsAuthz.canQuery();
       vm.authz.canCreate = ThingsAuthz.canCreate();
-      vm.authz.canConstrainThings = ThingsAuthz.canConstrainThings();
       vm.authz.canSeeTags = ThingsAuthz.canSeeTags();
       if (item && item.$promise) {
         vm.authz.canUpdate = false;

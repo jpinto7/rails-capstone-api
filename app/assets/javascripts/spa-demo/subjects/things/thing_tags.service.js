@@ -12,10 +12,9 @@
 
   function ThingTag($resource, APP_CONFIG) {
     return $resource(
-      APP_CONFIG.server_url + '/api/things/:thing_id/thing_tags/:id',
+      APP_CONFIG.server_url + '/api/things/:thing_id/tags',
       {
         thing_id: '@thing_id',
-        id: '@id'
       },
       { update: { method:'PUT' }}
     );

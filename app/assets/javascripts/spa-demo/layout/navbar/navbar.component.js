@@ -43,7 +43,7 @@
     }
 
     function goSearch() {
-      $state.go('things', {
+      $state.go('search', {
         tag: vm.searchString
       });
     }
