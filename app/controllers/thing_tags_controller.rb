@@ -21,7 +21,7 @@ class ThingTagsController < ApplicationController
       delete_tags @thing
       assign_tags @thing
       if @thing.save
-        head :no_content
+        head :created
       else
         render json: { errors: thing.errors.messages }, status: :unprocessable_entity
       end

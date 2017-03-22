@@ -81,7 +81,7 @@
       vm.authz.canGetDetails = ThingsAuthz.canGetDetails(item);
       vm.authz.canUpdateImage = ThingsAuthz.canUpdateImage(item);
       vm.authz.canRemoveImage = ThingsAuthz.canRemoveImage(item);
-      vm.authz.canAssignTags = ThingsAuthz.canAssignTags(item);
+      vm.authz.canAssignTags = ThingsAuthz.canUpdate(item);
       console.log('checkAccess', item, vm.authz);
     }
 

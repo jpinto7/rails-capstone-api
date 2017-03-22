@@ -95,9 +95,9 @@
         }
       );
       $q.all([
+        vm.tags.$promise,
         vm.item.$promise,
         vm.images.$promise,
-        vm.tags.$promise
       ]).catch(handleError);
     }
 
@@ -113,13 +113,22 @@
 
     function create() {
       vm.item.errors = null;
-      vm.item.$save().then(
-        function() {
-          console.log('thing created', vm.item);
-          $state.go('showThing', { id: vm.item.id });
-        },
-        handleError
-      );
+      vm.item.$save()
+        .then(saveThingTags)
+        .then(showThing)
+        .catch(handleError);
+
+      function saveThingTags() {
+        console.log('thing created', vm.item);
+        return ThingTag.save({
+          thing_id: vm.item.id,
+          tags: vm.tags
+        }).$promise;
+      }
+
+      function showThing() {
+        $state.go('showThing', { id: vm.item.id });
+      }
     }
 
     function clear() {
@@ -133,12 +142,12 @@
       var saveThingTags = ThingTag.save({
         thing_id: vm.item.id,
         tags: vm.tags
-      });
-      updateImageLinks([updateThing, saveThingTags]);
+      }).$promise;
+      updateImageLinks([saveThingTags, updateThing]);
     }
 
     function updateImageLinks(promises_array) {
-      console.log('updating links to images');
+      console.log('updating links to images', promises_array);
       var promises = [];
       if (promises_array) {
         angular.forEach(promises_array, function(promise) {

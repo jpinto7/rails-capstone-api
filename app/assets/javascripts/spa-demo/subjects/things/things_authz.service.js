@@ -38,10 +38,6 @@
       return Authz.isOrganizer(thing) || Authz.isAdmin();
     };
 
-    ThingsAuthz.prototype.canAssignTags = function(thing) {
-      return Authz.isOrganizer(thing);
-    };
-
     ThingsAuthz.prototype.canSeeTags = function() {
       return Authz.isAuthenticated();
     };
