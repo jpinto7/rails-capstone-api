@@ -3,5 +3,7 @@
     <h1>Things <small ng-if="vm.searchTagName">Search: {{vm.searchTagName}}</small></h1>
   </div>
   <sd-thing-selector authz="vm.authz"></sd-thing-selector>
-  <button class="btn btn-primary btn-fab" ui-sref="newThing" ng-if="vm.authz.canCreate"><i class="material-icons">add</i></button>
+  <button class="btn btn-primary btn-fab" ui-sref="newThing" ng-if="vm.authz.canCreate">
+    <i class="material-icons">add</i>
+  </button>
 </div>

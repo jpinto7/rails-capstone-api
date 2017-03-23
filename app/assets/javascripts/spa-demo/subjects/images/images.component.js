@@ -9,6 +9,9 @@
       bindings: {
         authz: '<'
       },
+      require: {
+        imagesAuthz: '^sdImagesAuthz'
+      }
     })
     .component('sdImageEditor', {
       templateUrl: imageEditorTemplateUrl,
@@ -50,6 +53,7 @@
           return Authz.getAuthorizedUserId();
         },
         function() {
+          vm.imagesAuthz.newItem(null);
           vm.items = Image.query();
         }
       );
