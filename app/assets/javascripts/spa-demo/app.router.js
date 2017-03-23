@@ -21,7 +21,7 @@
           authenticate: true
         },
         resolve: {
-          auth: ['$state', '$state', function($state, $auth) {
+          auth: ['$state', '$auth', function($state, $auth) {
             return $auth.validateUser().catch(function() {
               $state.go('home');
             });
