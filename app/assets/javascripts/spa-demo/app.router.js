@@ -16,7 +16,7 @@
     $stateProvider
       .state('auth', {
         abstract: true,
-        template: '<ui-view></ui-view>',
+        template: '<div ui-view></div>',
         data: {
           authenticate: true
         },
@@ -78,9 +78,18 @@
     $urlRouterProvider.otherwise('/');
   }
 
-  RunFunction.$inject = ['$rootScope', '$state'];
+  RunFunction.$inject = ['$rootScope', '$state', '$auth'];
 
-  function RunFunction($rootScope, $state) {
+  function RunFunction($rootScope, $state, $auth) {
+    $rootScope.$on('$stateChangeStart', function(event, toState) {
+      if (toState.name === 'accountSignup') {
+        $auth.validateUser().then(function() {
+          event.preventDefault();
+          $state.go('home');
+        });
+      }
+    });
+
     $rootScope.$on('auth:logout-success', function() {
       if ($state.current.data && $state.current.data.authenticate) {
         $state.go('home');

@@ -9,7 +9,12 @@
       <input type="password" id="input-password" class="form-control" name="login_password" ng-model="$ctrl.loginForm.password" required="required" />
     </div>
     <div id="login-submit">
-      <span class="invalid" ng-hide="login_form.$dirty">{{$ctrl.loginForm.errors.full_messages}}</span>
+      <div ng-repeat="full_message in $ctrl.loginForm.errors.full_messages" ng-if="!login_form.$dirty">
+        <div class="alert alert-dismissible alert-danger">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          <span>{{full_message}}</span>
+        </div>
+      </div>
       <button class="btn btn-raised btn-primary btn-sm" ng-disabled="login_form.$invalid" name="login_submit" type="submit">Login</button>
     </div>
     <div id="new-account">
