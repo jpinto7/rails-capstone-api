@@ -21,11 +21,11 @@
           authenticate: true
         },
         resolve: {
-          auth: function($state, $auth) {
-            return $auth.validateUser().catch(function(){
+          auth: ['$state', '$state', function($state, $auth) {
+            return $auth.validateUser().catch(function() {
               $state.go('home');
             });
-          }
+          }]
         }
       })
       .state('home', {
