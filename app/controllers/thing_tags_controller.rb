@@ -4,7 +4,7 @@ class ThingTagsController < ApplicationController
   wrap_parameters :thing_tags, include: ['tags', 'thing_id']
   before_action :get_thing, only: [:index, :create]
   before_action :check_empty_tags, only: [:create]
-  before_action :authenticate_user!, only: [:index, :create]
+  before_action :authenticate_user!, only: [:create]
   after_action :verify_authorized
 
   def index

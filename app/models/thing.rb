@@ -10,7 +10,6 @@ class Thing < ActiveRecord::Base
   scope :not_linked, ->(image) { where.not(id: ThingImage.select(:thing_id).where(image: image)) }
   scope :with_tag, ->(tag_name) { joins(:tags).where(tags: { name: tag_name.parameterize('_') }) }
 
-
   private
     def check_tags
       tags.destroy_all
