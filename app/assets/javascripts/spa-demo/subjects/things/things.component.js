@@ -58,14 +58,14 @@
     vm.updateImageLinks = updateImageLinks;
 
     vm.$onInit = function() {
-      console.log('ThingEditorController',$scope);
+      console.log('ThingEditorController', $scope);
       $scope.$watch(
         function() {
           return Authz.getAuthorizedUserId();
         },
-        function() {
+        function(userId) {
           if ($stateParams.id) {
-            reload($stateParams.id);
+            reload($stateParams.id, userId);
           } else {
             newResource();
           }
@@ -80,11 +80,15 @@
       return vm.item;
     }
 
-    function reload(thingId) {
+    function reload(thingId, userId) {
+      var promises = [];
       var itemId = thingId ? thingId : vm.item.id;
       console.log('re/loading thing', itemId);
       vm.images = ThingImage.query({ thing_id: itemId });
-      vm.tags = ThingTag.query({ thing_id: itemId });
+      if (userId !== null && userId !== undefined) {
+        vm.tags = ThingTag.query({ thing_id: itemId });
+        promises.push(vm.tags.$promise);
+      }
       vm.item = Thing.get({ id: itemId });
       vm.thingsAuthz.newItem(vm.item);
       vm.images.$promise.then(
@@ -94,11 +98,9 @@
           });
         }
       );
-      $q.all([
-        vm.tags.$promise,
-        vm.item.$promise,
-        vm.images.$promise,
-      ]).catch(handleError);
+      promises.push(vm.item.$promise, vm.images.$promise);
+      $q.all(promises)
+        .catch(handleError);
     }
 
     function haveDirtyLinks() {

@@ -45,7 +45,7 @@ class ThingPolicy < ApplicationPolicy
   end
 
   def get_tags?
-    true
+    @user
   end
 
   def assign_tags?
