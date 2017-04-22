@@ -6,7 +6,7 @@ class ThingImagesController < ApplicationController
   before_action :get_image, only: [:image_things]
   before_action :get_thing_image, only: [:update, :destroy]
   before_action :authenticate_user!, only: [:create, :update, :destroy]
-  after_action :verify_authorized, except: [:subjects]
+  after_action :verify_authorized, except: [:subjects, :finder]
   #after_action :verify_policy_scoped, only: [:linkable_things]
   before_action :origin, only: [:subjects]
 
@@ -18,7 +18,7 @@ class ThingImagesController < ApplicationController
   def image_things
     authorize @image, :get_things?
     @thing_images=@image.thing_images.prioritized.with_name
-    render :index 
+    render :index
   end
 
   def linkable_things
@@ -52,6 +52,17 @@ class ThingImagesController < ApplicationController
       @thing_images=ThingImage.with_distance(@origin, @thing_images) if distance.downcase=="true"
       render "thing_images/index"
     end
+  end
+
+  def finder
+    tag = params[:tag]
+    subject = params[:subject]
+    @thing_images = ThingImage.with_name
+      .with_caption
+      .with_position
+    @thing_images = @thing_images.with_tag(tag) if tag
+    @thing_images = @thing_images.things if subject && subject.downcase=="thing"
+    render "thing_images/index"
   end
 
   def create
