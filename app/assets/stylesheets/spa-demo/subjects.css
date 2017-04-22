@@ -49,7 +49,7 @@ div.thing-info .glyphicon-chevron-right {
 div.thing-info .overlay {
   color: white;
   opacity: 0.0;
-  z-index: 1002;  
+  z-index: 1002;
   cursor: pointer;
 }
 div.thing-info .overlay:hover {
@@ -66,13 +66,3 @@ div.thing-marker-info img,
 div.image-marker-info img {
   width: 200px;
 }
-
-
-
-
-
-
-
-
-
-

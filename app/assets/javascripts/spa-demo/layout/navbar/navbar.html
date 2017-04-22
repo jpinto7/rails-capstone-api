@@ -26,13 +26,19 @@
                 <a ui-sref="things({id:null})">Things</a></li>
             <li ui-sref-active="active">
                 <a ui-sref="home">Subjects</a></li>
+            <li ui-sref-active="active">
+                <a ui-sref="finder">Finder</a></li>
           </ul>
-          
+
         </li>
       </ul>
-      
-      <span class="origin-control navbar-left">
+
+      <span class="origin-control navbar-left" ng-show="$ctrl.showOriginSelector()">
         <sd-current-origin-selector></sd-current-origin-selector>
+      </span>
+
+      <span class="search-tag navbar-left" ng-show="$ctrl.showSearchByTag()">
+        <sd-finder-search-box></sd-finder-search-box>
       </span>
 
       <ul class="nav navbar-nav navbar-right">

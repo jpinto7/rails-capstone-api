@@ -1,0 +1,24 @@
+<form name="select_tag"
+      class="navbar-form"
+      ng-hide="$ctrl.getCurrentTag()">
+  <input name="thing-search"
+         type="text"
+         placeholder="Thing Search"
+         ng-model="$ctrl.tag"
+         ng-required="true" />
+  <button title="lookup-tag"
+          class="btn btn-default"
+          ng-disabled="select_tag.$invalid"
+          ng-click="$ctrl.lookupThings()">Find</button>
+</form>
+
+<div class="search-criteria" ng-show="$ctrl.getCurrentTag()">
+  <div class="navbar-form">
+    <label>Tag: </label>
+    <span class="current-origin">{{$ctrl.getCurrentTag()}}</span>
+    <button title="change-tag"
+            type="submit"
+            class="btn btn-default"
+            ng-click="$ctrl.clear()">Clear</button>
+  </div>
+</div>

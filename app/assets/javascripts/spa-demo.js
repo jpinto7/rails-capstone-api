@@ -70,3 +70,7 @@
 //= require spa-demo/subjects/current_subjects/current_subjects.component
 //= require spa-demo/subjects/current_images/current_images.component
 //= require spa-demo/subjects/current_things/current_things.component
+
+//= require spa-demo/finder/finder.module
+//= require spa-demo/finder/current_tag.service
+//= require spa-demo/finder/finder_search_box/finder_search_box.component
