@@ -188,8 +188,8 @@
       if (ti.distance) {
         html += "<span class='distance'> ("+ Number(ti.distance).toFixed(1) +' mi)</span>';
       }
-      html += "</div><img src='"+ ti.image_content_url+'?width=200>';
-      html += '</div>';
+      html += "</div><img src='"+ ti.image_content_url+"?width=200'>";
+      html += "</div>";
     return html;
   }
 
@@ -203,8 +203,8 @@
       if (ti.distance) {
         html += "<span class='distance'> ("+ Number(ti.distance).toFixed(1) +' mi)</span>';
       }
-      html += "</div><img src='"+ ti.image_content_url+'?width=200>';
-      html += '</div>';
+      html += "</div><img src='"+ ti.image_content_url+"?width=200'>";
+      html += "</div>";
     return html;
   }
 
