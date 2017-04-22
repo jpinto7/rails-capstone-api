@@ -165,7 +165,8 @@
     if (!this.map) {
       return;
     } else if (!thing_id && !image_id) {
-      if (this.map.getCurrentMarker().title!=='origin') {
+      var currentMarker = this.map.getCurrentMarker();
+      if (currentMarker && currentMarker.title!=='origin') {
         this.map.setActiveMarker(null);
       }
     } else {
