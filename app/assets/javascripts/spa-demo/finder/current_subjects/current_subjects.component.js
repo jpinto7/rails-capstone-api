@@ -16,14 +16,12 @@
     '$q',
     '$element',
     '$filter',
-    'spa-demo.geoloc.currentOrigin',
-    'spa-demo.geoloc.myLocation',
     'spa-demo.geoloc.Map',
     'spa-demo.finder.currentSubjects',
     'spa-demo.config.APP_CONFIG'
   ];
 
-  function CurrentSubjectsMapController($scope, $q, $element, $filter, currentOrigin, myLocation, Map, currentSubjects, APP_CONFIG) {
+  function CurrentSubjectsMapController($scope, $q, $element, $filter, Map, currentSubjects, APP_CONFIG) {
     var vm = this;
 
     vm.$onInit = function() {
@@ -31,11 +29,7 @@
     }
     vm.$postLink = function() {
       var element = $element.find('div')[0];
-      getLocation().then(
-        function(location){
-          vm.location = location;
-          initializeMap(element, location.position);
-        });
+      initializeMap(element, APP_CONFIG.default_position);
 
       $scope.$watch(
         function(){ return currentSubjects.getCurrentThingId(); },
@@ -67,37 +61,10 @@
             currentSubjects.setCurrentSubjectId(marker.thing_id, marker.image_id);
           }
         });
-      $scope.$watch(
-        function() { return currentOrigin.getLocation(); },
-        function(location) {
-          vm.location = location;
-          vm.updateOrigin();
-        });
     }
 
     return;
     //////////////
-    function getLocation() {
-      var deferred = $q.defer();
-
-      //use current address if set
-      var location = currentOrigin.getLocation();
-      if (!location) {
-        //try my location next
-        myLocation.getCurrentLocation().then(
-          function(location){
-            deferred.resolve(location);
-          },
-          function(){
-            deferred.resolve({ position: APP_CONFIG.default_position});
-          });
-      } else {
-        deferred.resolve(location);
-      }
-
-      return deferred.promise;
-    }
-
     function initializeMap(element, position) {
       vm.map = new Map(element, {
         center: position,
@@ -190,7 +157,7 @@
       "<div class='origin'>",
         "<div class='full_address'>"+ full_address + '</div>',
         "<div class='position'>",
-          "ng: <span class='lng'>"+ lng +'</span>',
+          "lng: <span class='lng'>"+ lng +'</span>',
           "lat: <span class='lat'>"+ lat +'</span>',
         "</div>",
       "</div>",
@@ -208,6 +175,15 @@
       html += "<span class='thing-name'>"+ ti.thing_name + '</span>';
       if (ti.image_caption) {
         html += "<span class='image-caption'> ("+ ti.image_caption + ')</span>';
+      }
+      if (ti.position) {
+        var positionHtml = [
+          "<div class='position'>",
+            "lng: <span class='lng'>"+ ti.position.lng +'</span>',
+            "lat: <span class='lat'>"+ ti.position.lat +'</span>',
+          "</div>",
+        ].join('\n');
+        html += positionHtml;
       }
       if (ti.distance) {
         html += "<span class='distance'> ("+ Number(ti.distance).toFixed(1) +' mi)</span>';
