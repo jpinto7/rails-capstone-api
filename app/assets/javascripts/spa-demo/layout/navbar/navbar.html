@@ -8,14 +8,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" ui-sref="home">Brand</a>
+      <a class="navbar-brand" ui-sref="home">Phototourist</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Go To<span class="caret"></span></a>
+        <li id="gotomenu-dropdown" class="dropdown">
+          <button data-target="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Go To<span class="caret"></span></button>
 
           <ul class="dropdown-menu">
             <li ui-sref-active="active">
@@ -43,9 +43,9 @@
 
       <ul class="nav navbar-nav navbar-right">
         <li id="login-dropdown" class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          <button data-target="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
           <span id="navbar-loginlabel">{{$ctrl.getLoginLabel()}}</span>
-          <span class="caret"></span></a>
+          <span class="caret"></span></button>
 
           <ul class="dropdown-menu">
             <li><sd-authn-session></sd-authn-session></li>

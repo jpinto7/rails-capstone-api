@@ -12,3 +12,37 @@ span#user_id {
 div#logout-identity {
   text-align: center; /* keep organized as name in label gets long */
 }
+
+
+
+#login-dropdown > button {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 20px;
+  outline: none;
+  text-decoration: none;
+  border: none;
+  background: none;
+}
+
+#gotomenu-dropdown > button {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 20px;
+  outline: none;
+  text-decoration: none;
+  border: none;
+  background: none;
+}
+
+@media(min-width: 768px) {
+  #login-dropdown > button {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  #gotomenu-dropdown > button {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
