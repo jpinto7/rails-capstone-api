@@ -3,6 +3,7 @@
  *
  *= require bootstrap
  *= require ui-cropper
+ *= require ng-tags-input
  *= require spa-demo/layout
  *= require spa-demo/authn
  *= require spa-demo/subjects

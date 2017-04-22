@@ -1,4 +1,4 @@
-# 
+#
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.6'
@@ -37,6 +37,7 @@ group :development, :test do
   gem 'chromedriver-helper', '~>1.0', '>=1.0.0'
   gem 'launchy', '~>2.4', '>=2.4.3'
   gem 'simplecov', '~>0', '>=0.12', :require=>false
+  gem 'figaro', '~> 1.1', '>= 1.1.1'
 end
 
 group :production do
@@ -61,4 +62,5 @@ source 'http://insecure.rails-assets.org' do
   gem 'rails-assets-ng-file-upload', '~>12.2', '>= 12.2.11'
   gem 'rails-assets-ng-file-upload-shim'
   gem 'rails-assets-ui-cropper', '~>1.0', '>=1.0.4'
+  gem 'rails-assets-ng-tags-input', '~>3.1', '>= 3.1.2'
 end

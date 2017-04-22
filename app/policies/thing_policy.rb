@@ -39,6 +39,14 @@ class ThingPolicy < ApplicationPolicy
     organizer_or_admin?
   end
 
+  def get_tags?
+    true
+  end
+
+  def assign_tags?
+    organizer?
+  end
+
   class Scope < Scope
     def user_roles members_only=true, allow_admin=true
       include_admin=allow_admin && @user && @user.is_admin?
@@ -54,7 +62,7 @@ class ThingPolicy < ApplicationPolicy
              end}
     end
     def resolve
-      user_roles 
+      user_roles
     end
   end
 end
