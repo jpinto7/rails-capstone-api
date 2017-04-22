@@ -17,11 +17,14 @@
   NavbarController.$inject = [
     "$scope",
     "spa-demo.authn.Authn",
-    "$state"
+    "$state",
+    "$element"
   ];
 
-  function NavbarController($scope, Authn, $state) {
+  function NavbarController($scope, Authn, $state, $element) {
     var vm=this;
+    var currentState = "";
+    var loginDropdown = $element.find('#login-dropdown');
     vm.getLoginLabel = getLoginLabel;
     vm.showOriginSelector = showOriginSelector;
     vm.showSearchByTag = showSearchByTag;
@@ -32,10 +35,11 @@
 
     $scope.$watch(function() { return $state.$current.name; },
       function(stateName) {
-        vm.stateName = stateName;
+        loginDropdown.removeClass('open');
+        currentState = stateName;
       }
     );
-    
+
     return;
     //////////////
     function getLoginLabel() {
@@ -43,11 +47,11 @@
     }
 
     function showOriginSelector() {
-      return vm.stateName === 'home';
+      return currentState === 'home';
     }
 
     function showSearchByTag() {
-      return vm.stateName === 'finder';
+      return currentState === 'finder';
     }
   }
 })();
